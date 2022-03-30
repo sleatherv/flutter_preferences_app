@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:preferences_app/share_preferences/preferences.dart';
 import 'package:preferences_app/widgets/side_menu.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -13,9 +14,9 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
 
-  bool isDarkMode = false;
-  int gender = 1;
-  String name = 'Steven';
+  // bool isDarkMode = false;
+  // int gender = 1;
+  // String name = 'Steven';
 
   @override
   Widget build(BuildContext context) {
@@ -34,29 +35,29 @@ class _SettingsScreenState extends State<SettingsScreen> {
               const Divider(),
 
               SwitchListTile.adaptive(
-                value: isDarkMode,
+                value: Preferences.isDarkMode,
                 title: const Text('Darkmode'),
                 onChanged: (value){
-                  isDarkMode = value;
+                  Preferences.isDarkMode = value;
                   setState(() {});
                 }
               ),
               const Divider(),
               RadioListTile<int>(
                 value: 1,
-                groupValue: gender,
+                groupValue: Preferences.gender,
                 title: const Text('Male'),
                 onChanged: (value) {
-                  gender = value ?? 1;
+                  Preferences.gender = value ?? 1;
                   setState(() {});
                 },
               ),
               RadioListTile<int>(
                 value: 2,
-                groupValue: gender,
+                groupValue: Preferences.gender,
                 title: const Text('Female'),
                 onChanged: (value) {
-                  gender = value ?? 2;
+                  Preferences.gender = value ?? 2;
                   setState(() {});
                 },
               ),
@@ -64,9 +65,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextFormField(
-                  initialValue: name,
+                  initialValue: Preferences.name,
                   onChanged: (value) {
-                    name = value;
+                    Preferences.name = value;
                     setState(() {});
                   },
                   decoration: const InputDecoration(
