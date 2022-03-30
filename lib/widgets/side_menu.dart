@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:preferences_app/screens.dart';
+import 'package:preferences_app/screens/screens.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({ Key? key }) : super(key: key);
