@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:preferences_app/providers/theme_provider.dart';
 import 'package:preferences_app/share_preferences/preferences.dart';
 import 'package:preferences_app/widgets/side_menu.dart';
+import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatefulWidget {
 
@@ -14,9 +16,6 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
 
-  // bool isDarkMode = false;
-  // int gender = 1;
-  // String name = 'Steven';
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +38,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 title: const Text('Darkmode'),
                 onChanged: (value){
                   Preferences.isDarkMode = value;
+                  final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+                  //Update theme config dinamycaly
+                  value ? themeProvider.setDarkMode() : themeProvider.setLightMode();
+
                   setState(() {});
                 }
               ),
